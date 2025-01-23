@@ -3,17 +3,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>com.deskly</groupId>
-        <artifactId>deskly</artifactId>
-        <version>static</version>
-    </parent>
-
     <artifactId>deskly-location</artifactId>
     <version>1.0.0</version>
     <name>deskly-location</name>
     <description>deskly-location</description>
     <packaging>jar</packaging>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.4.0</version>
+        <relativePath/>
+    </parent>
 
     <properties>
         <java.version>21</java.version>
