@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deskly-core
+  namespace: deskly
+spec:
+  selector:
+    matchLabels:
+      app: deskly-core
+  template:
+    metadata:
+      labels:
+        app: deskly-core
+    spec:
+      containers:
+        - name: deskly-core
+          image: kamilbonkowski/deskly-core:2.21-prod
+          ports:
+            - containerPort: 8081
+          resources:
+            requests:
+              memory: 720Mi
+              cpu: 500m
+            limits:
+              memory: 720Mi
+              cpu: 500m
+---              
+apiVersion: v1
+kind: Service
+metadata:
+  name: deskly-core
+  namespace: deskly
+spec:
+  ports:
+  - port: 80
+    targetPort: 8081
+  selector:
+    app: deskly-core
+  type: ClusterIP
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: deskly-core
+  namespace: deskly
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: deskly-core
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 90
+    - type: Resource          
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 90  

@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: deskly-core
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+
+logging:
+  level:
+    root: info
+
+server:
+  port: 8081
