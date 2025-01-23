@@ -117,6 +117,14 @@ pipeline {
 							}
         				}
         			}
+        			post {
+						always {
+							def tag = "${env.BUILD_NUMBER}"
+						sh """
+						docker rmi $DOCKER_REPOSITORY_CORE:${tag}
+						"""
+						}
+					}
            		}
 				stage ('Deskly Location') {
 					when {
@@ -139,6 +147,14 @@ pipeline {
 							}
 						}
            			}
+           			post {
+						always {
+							def tag = "${env.BUILD_NUMBER}"
+						sh """
+						docker rmi $DOCKER_REPOSITORY_LOCATION:${tag} --force
+						"""
+						}
+					}
 				}
 			}
 		}
