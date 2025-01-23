@@ -119,10 +119,12 @@ pipeline {
         			}
         			post {
 						always {
-							def tag = "${env.BUILD_NUMBER}"
-						sh """
-						docker rmi $DOCKER_REPOSITORY_CORE:${tag}
-						"""
+							script {
+								def tag = "${env.BUILD_NUMBER}"
+								sh """
+								docker rmi $DOCKER_REPOSITORY_CORE:${tag}
+								"""
+							}
 						}
 					}
            		}
@@ -149,10 +151,12 @@ pipeline {
            			}
            			post {
 						always {
-							def tag = "${env.BUILD_NUMBER}"
-						sh """
-						docker rmi $DOCKER_REPOSITORY_LOCATION:${tag} --force
-						"""
+							script {
+								def tag = "${env.BUILD_NUMBER}"
+								sh """
+								docker rmi $DOCKER_REPOSITORY_LOCATION:${tag} --force
+								"""
+							}
 						}
 					}
 				}
