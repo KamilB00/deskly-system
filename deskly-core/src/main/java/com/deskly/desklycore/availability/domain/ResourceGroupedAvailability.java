@@ -2,6 +2,7 @@ package com.deskly.desklycore.availability.domain;
 
 
 import com.deskly.desklycore.availability.domain.segment.Segments;
+import com.deskly.desklycore.availability.web.ResourceAvailabilityDTO;
 import com.deskly.desklycore.shared.ResourceId;
 import com.deskly.desklycore.shared.TimeSlot;
 
@@ -13,7 +14,7 @@ import java.util.stream.Collectors;
 import static com.deskly.desklycore.availability.domain.segment.SegmentInMinutes.defaultSegment;
 import static java.util.stream.Collectors.toList;
 
-class ResourceGroupedAvailability {
+public class ResourceGroupedAvailability {
 
     private final List<ResourceAvailability> resourceAvailabilities;
 
@@ -122,5 +123,15 @@ class ResourceGroupedAvailability {
                 .stream()
                 .map(ResourceAvailability::blockedBy)
                 .collect(Collectors.toSet());
+    }
+
+    public List<ResourceAvailabilityDTO> toDto() {
+        return resourceAvailabilities.stream()
+                .map(availability -> new ResourceAvailabilityDTO(
+                        !availability.isDisabled(),
+                        availability.segment().from().toString(),
+                        availability.segment().to().toString(),
+                        availability.resourceId().getId().toString()))
+                .toList();
     }
 }

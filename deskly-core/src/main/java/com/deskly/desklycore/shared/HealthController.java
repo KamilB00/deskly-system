@@ -1,4 +1,4 @@
-package com.deskly.desklycore.availability.web;
+package com.deskly.desklycore.shared;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
