@@ -12,8 +12,9 @@ public class WebConfiguration implements WebMvcConfigurer {
         registry
                 .addMapping("/**")
                 .allowedOrigins("*")
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                .allowedHeaders("Access-Control-Allow-Origin", "Content-Type", "Authorization");
-
+                .allowedMethods("DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT")
+                .allowedHeaders("Content-Type", "X-Amz-Date", "Authorization", "X-Api-Key", "X-Amz-Security-Token")
+                .exposedHeaders("Content-Type", "X-Amz-Date", "Authorization", "X-Api-Key", "X-Amz-Security-Token")
+                .allowCredentials(false);
     }
 }
