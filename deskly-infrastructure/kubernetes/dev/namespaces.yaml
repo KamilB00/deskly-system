@@ -4,10 +4,3 @@ metadata:
   name: deskly
   labels:
     name: deskly
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: amazon-cloudwatch
-  labels:
-    name: amazon-cloudwatch
