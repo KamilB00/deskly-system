@@ -14,28 +14,43 @@ spec:
     spec:
       containers:
         - name: deskly-location
-          image: kamilbonkowski/deskly-location:29
+          image: ${IMAGE_NAME}
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: "prod"
             - name: SPRING_DATASOURCE_URL
-              value: "jdbc:postgresql://terraform-20250122083427118500000002.cwriekum629g.us-east-1.rds.amazonaws.com:5432/desklydb"
+              value: ${SPRING_DATASOURCE_URL}
             - name: SPRING_DATASOURCE_USERNAME
-              value: "kamil"
+              valueFrom:
+                secretKeyRef:
+                  name: deskly-location-secrets-prod
+                  key: SPRING_DATASOURCE_USERNAME
             - name: SPRING_DATASOURCE_PASSWORD
-              value: "password123"
+              valueFrom:
+                secretKeyRef:
+                  name: deskly-location-secrets-prod
+                  key: SPRING_DATASOURCE_PASSWORD
             - name: AWS_SQS_URL
-              value: "https://sqs.us-east-1.amazonaws.com/619508104249/deskly-sqs"
+              value: ${AWS_SQS_URL}
             - name: AWS_BUCKET_NAME
-              value: "deskly-bucket-2"
+              value: ${AWS_BUCKET_NAME}
             - name: AWS_DEFAULT_REGION
-              value: "us-east-1"
+              value: ${AWS_DEFAULT_REGION}
             - name: AWS_SECRET_ACCESS_KEY
-              value: "3SqPVVfLDVVSbrqCvt/cL7lmXWMVhgM9x8I1ybdA"
+              valueFrom:
+                secretKeyRef:
+                  name: deskly-location-secrets-prod
+                  key: AWS_SECRET_ACCESS_KEY
             - name: AWS_ACCESS_KEY_ID
-              value: "ASIAZAPMPPQ4XDZR5IOB"
+              valueFrom:
+                secretKeyRef:
+                  name: deskly-location-secrets-prod
+                  key: AWS_SECRET_ACCESS_KEY
             - name: AWS_SESSION_TOKEN
-              value: "IQoJb3JpZ2luX2VjEAAaCXVzLXdlc3QtMiJHMEUCIAbU5hp5/ym5Cw6fN0e0tiffq+AGreYHdWArht+qQy3eAiEAyapM8FTLIVrxJhyaa3uxN0+csvu+DfhursdypG1kOhcqswII+f//////////ARABGgw2MTk1MDgxMDQyNDkiDHMbQqTjQ6mHjtjcuiqHAtn5CxOX0K7z0Ayw5oeJFVTPGzCWJQEAJPNZ6IDS0asnRoxy0juPpYhiVAG9zUia3H0M+lDJ4pG8i/3fsf1+L7CKCy1KmColtvUFaQDlkhxykOI2K6EXiOUuyallIa69cj/45y2v00UY9QIavkuvn46FszgueXl8Y7qMB1v7hZJyqwnQJ1SIlkVyHKifRPlrY0iE+LCGemBZYulWdY8FSG1VaaLC7xuCBmdj46JJeVSIZ6VvMZTEP3xtxmRtg2L6pTYw2UBrO2c4A73pNSTn4pB4lM36EICFyvNuHVYV7w+V2lrg4N5YsI/ribht1bx/nOmPju+R0gC8U3jK7e19gJvtl9VgpzufMIiiy7wGOp0Bigup4dr0MnPMWPeOMLC/Qd7XHDMqrHd84kkK13LNRWxw43ZpvhZLZADl+yhBZ4frNEYdjP5MQM4boxHkNyWm4i9LxSc6owhyiSOLqCzlhEUMtK50mMRAb2EAy3cRuvP/zn4zZviM+/W++vOZLJ43V9Pvtvfj2KeUOd+Agfz9IYHFZFiQHz9Mobxjxsb3c1mhNB/taxMmi79RkDoDVg=="
+              valueFrom:
+                secretKeyRef:
+                  name: deskly-location-secrets-prod
+                  key: AWS_SECRET_ACCESS_KEY
           ports:
             - containerPort: 8080
           resources:
