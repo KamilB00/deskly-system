@@ -2,7 +2,7 @@ package com.deskly.desklycore.availability.domain;
 
 
 import com.deskly.desklycore.availability.infrastructure.AvailabilityEventsHandler;
-import com.deskly.desklycore.shared.EventsPublisher;
+import com.deskly.desklycore.shared.messaging.EventsPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;

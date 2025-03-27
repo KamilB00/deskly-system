@@ -1,9 +1,9 @@
 locals {
-  env = "staging"
-  region = "us-east-1"
-  zone1 = "us-east-1a"
-  zone2 = "us-east-1b"
-  eks_name = "eks_deskly"
+  env         = "staging"
+  region      = "us-east-1"
+  zone1       = "us-east-1a"
+  zone2       = "us-east-1b"
+  eks_name    = "eks_deskly"
   eks_version = "1.29"
-  profile = "devops_lab"
+  profile     = "cloud"
 }

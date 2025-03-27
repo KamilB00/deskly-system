@@ -1,8 +1,8 @@
 package com.deskly.desklycore.availability.infrastructure;
 
 import com.deskly.desklycore.availability.domain.AvailabilityFacade;
-import com.deskly.desklycore.shared.ReceivedEvent;
-import com.deskly.desklycore.shared.TimeSlot;
+import com.deskly.desklycore.shared.messaging.ReceivedEvent;
+import com.deskly.desklycore.shared.language.TimeSlot;
 import io.vavr.control.Either;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;

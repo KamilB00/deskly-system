@@ -1,105 +1,57 @@
 package com.deskly.desklycore.reservation.domain;
 
-import com.deskly.desklycore.reservation.domain.changes.*;
-import com.deskly.desklycore.reservation.domain.commands.*;
-import com.deskly.desklycore.shared.ReservationId;
-import com.deskly.desklycore.shared.ResourceId;
-import com.deskly.desklycore.shared.TimeSlot;
-import lombok.EqualsAndHashCode;
+import com.deskly.desklycore.availability.domain.ResourceAvailabilityId;
+import com.deskly.desklycore.shared.language.*;
 import lombok.Getter;
-import lombok.val;
 
+import java.time.Instant;
+
+import static java.util.Objects.requireNonNull;
 
 @Getter
-@EqualsAndHashCode
-public final class Reservation {
+public class Reservation {
 
     private final ReservationId reservationId;
 
-    private final ReservationChanges reservationChanges;
-
     private final ResourceId resourceId;
 
-    private Owner owner = Owner.none();
+    private final ResourceAvailabilityId resourceAvailabilityId;
 
-    private TimeSlot timeSlot = TimeSlot.empty();
+    private final Party party;
 
-    private boolean isActive = false;
+    private Status status = Status.PENDING;
 
-    private boolean isTemporary = true;
+    private final Instant startTime;
 
-    private boolean isCancelled = false;
-
-    private boolean isFinished = false;
+    private final Instant endTime;
 
     private ReservationVersion version;
 
     public Reservation(ReservationId reservationId,
                        ResourceId resourceId,
-                       TimeSlot timeSlot,
-                       boolean isActive,
-                       boolean isTemporary,
-                       boolean isCancelled,
-                       boolean isFinished,
-                       ReservationVersion version) {
-        this.reservationId = reservationId;
-        this.reservationChanges = ReservationChanges.empty(reservationId);
-        this.resourceId = resourceId;
-        this.timeSlot = timeSlot;
-        this.isActive = isActive;
-        this.isTemporary = isTemporary;
-        this.isCancelled = isCancelled;
-        this.isFinished = isFinished;
-        this.version = version;
+                       ResourceAvailabilityId resourceAvailabilityId,
+                       Party party,
+                       Instant startTime,
+                       Instant endTime) {
+        this.reservationId = requireNonNull(reservationId);
+        this.resourceId = requireNonNull(resourceId);
+        this.resourceAvailabilityId = requireNonNull(resourceAvailabilityId);
+        this.party = requireNonNull(party);
+        this.startTime = requireNonNull(startTime);
+        this.endTime = requireNonNull(endTime);
+        this.version = new ReservationVersion();
     }
 
-    public void change(ChangeActivityStatusCommand command) {
-        val changed = reservationChanges.appendIfChanged(new ActivityStatusChanged(this.isActive, command.getValue(), version.getNext()));
-        if (changed) {
-            this.isActive = command.getValue();
-            this.version = version.getNext();
-        }
+    public void changeStatus(Status status) {
+        this.status = status;
+        this.version = version.getNext();
     }
 
-    public void change(ChangeCancellationStatusCommand command) {
-        val changed = reservationChanges.appendIfChanged(new CancellationStatusChanged(this.isCancelled, command.getValue(), version.getNext()));
-        if (changed) {
-            this.isCancelled = command.getValue();
-            this.version = version.getNext();
-        }
+    public TimeSlot getTimeSlot() {
+        return new TimeSlot(startTime, endTime);
     }
 
-    public void change(ChangeFinishStatusCommand command) {
-        val changed = reservationChanges.appendIfChanged(new FinishStatusChanged(this.isFinished, command.getValue(), version.getNext()));
-        if (changed) {
-            this.isFinished = command.getValue();
-            this.version = version.getNext();
-        }
+    public PartyId getPartyId() {
+        return party.id();
     }
-
-    public void change(ChangeTemporaryStatusCommand command) {
-        val changed = reservationChanges.appendIfChanged(new TemporaryStatusChanged(this.isTemporary, command.getValue(), version.getNext()));
-        if (changed) {
-            this.isTemporary = command.getValue();
-            this.version = version.getNext();
-        }
-    }
-
-    public void change(ChangeTimeSlotCommand command) {
-        val changed = reservationChanges.appendIfChanged(new TimeSlotChanged(this.timeSlot, command.getValue(), version.getNext()));
-        if (changed) {
-            this.timeSlot = command.getValue();
-            this.version = version.getNext();
-        }
-    }
-
-    public void change(ChangeOwnershipCommand command) {
-        val changed = reservationChanges.appendIfChanged(new OwnershipChanged(this.owner, command.getValue(), version.getNext()));
-        if (changed) {
-            this.owner = command.getValue();
-            this.version = version.getNext();
-        }
-    }
-
-
 }

@@ -1,9 +1,9 @@
 package com.deskly.desklycore.availability.domain;
 
 
-import com.deskly.desklycore.shared.PublishedEvent;
-import com.deskly.desklycore.shared.ResourceId;
-import com.deskly.desklycore.shared.TimeSlot;
+import com.deskly.desklycore.shared.messaging.PublishedEvent;
+import com.deskly.desklycore.shared.language.ResourceId;
+import com.deskly.desklycore.shared.language.TimeSlot;
 
 import java.time.Instant;
 import java.util.Set;

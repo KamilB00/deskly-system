@@ -1,7 +1,7 @@
 package com.deskly.desklycore.availability.domain;
 
-import com.deskly.desklycore.shared.ResourceId;
-import com.deskly.desklycore.shared.TimeSlot;
+import com.deskly.desklycore.shared.language.ResourceId;
+import com.deskly.desklycore.shared.language.TimeSlot;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;

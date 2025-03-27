@@ -3,8 +3,8 @@ package com.deskly.desklycore.availability.domain;
 
 import com.deskly.desklycore.availability.domain.segment.Segments;
 import com.deskly.desklycore.availability.web.ResourceAvailabilityDTO;
-import com.deskly.desklycore.shared.ResourceId;
-import com.deskly.desklycore.shared.TimeSlot;
+import com.deskly.desklycore.shared.language.ResourceId;
+import com.deskly.desklycore.shared.language.TimeSlot;
 
 import java.util.List;
 import java.util.Optional;

@@ -41,9 +41,13 @@ deskly-location/*.iml
 deskly-location/*.ipr
 .DS_Store
 
+deskly-infrastructure/kubernetes/dev/secrets-dev.yaml
+deskly-infrastructure/kubernetes/prod/secrets-prod.yaml
+
 ### Terraform ###
 # Local .terraform directories
 **/.terraform/*
+**/.terraform.lock.hcl
 
 # .tfstate files
 *.tfstate

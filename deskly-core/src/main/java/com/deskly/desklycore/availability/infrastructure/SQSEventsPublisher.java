@@ -1,7 +1,7 @@
 package com.deskly.desklycore.availability.infrastructure;
 
-import com.deskly.desklycore.shared.EventsPublisher;
-import com.deskly.desklycore.shared.PublishedEvent;
+import com.deskly.desklycore.shared.messaging.EventsPublisher;
+import com.deskly.desklycore.shared.messaging.PublishedEvent;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

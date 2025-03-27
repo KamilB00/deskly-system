@@ -2,9 +2,9 @@ package com.deskly.desklycore.availability.domain;
 
 
 import com.deskly.desklycore.availability.domain.segment.Segments;
-import com.deskly.desklycore.shared.EventsPublisher;
-import com.deskly.desklycore.shared.ResourceId;
-import com.deskly.desklycore.shared.TimeSlot;
+import com.deskly.desklycore.shared.messaging.EventsPublisher;
+import com.deskly.desklycore.shared.language.ResourceId;
+import com.deskly.desklycore.shared.language.TimeSlot;
 import jakarta.transaction.Transactional;
 
 import java.time.Clock;

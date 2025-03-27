@@ -1,8 +1,8 @@
 package com.deskly.desklycore.availability.infrastructure;
 
-import com.deskly.desklycore.shared.LocationId;
-import com.deskly.desklycore.shared.ResourceId;
-import com.deskly.desklycore.shared.ReceivedEvent;
+import com.deskly.desklycore.shared.language.LocationId;
+import com.deskly.desklycore.shared.language.ResourceId;
+import com.deskly.desklycore.shared.messaging.ReceivedEvent;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;

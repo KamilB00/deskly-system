@@ -1,8 +1,8 @@
 package com.deskly.desklycore.availability.web;
 
 import com.deskly.desklycore.availability.domain.AvailabilityFacade;
-import com.deskly.desklycore.shared.ResourceId;
-import com.deskly.desklycore.shared.TimeSlot;
+import com.deskly.desklycore.shared.language.ResourceId;
+import com.deskly.desklycore.shared.language.TimeSlot;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Duration;

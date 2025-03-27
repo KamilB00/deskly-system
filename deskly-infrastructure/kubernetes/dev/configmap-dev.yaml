@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: deskly-location-config-dev
+  namespace: deskly
+data:
+  AWS_SQS_URL: "https://sqs.us-east-1.amazonaws.com/521847299069/deskly-sqs"
+  AWS_BUCKET_NAME: "deskly-bucket-2"
+  AWS_DEFAULT_REGION: "us-east-1"
+  SPRING_PROFILES_ACTIVE: "dev"
+  SPRING_DATASOURCE_URL: "jdbc:postgresql://dev-db-url:5432/db_name"

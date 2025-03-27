@@ -1,7 +1,7 @@
 package com.deskly.desklycore.availability.infrastructure;
 
 
-import com.deskly.desklycore.shared.ReceivedEvent;
+import com.deskly.desklycore.shared.messaging.ReceivedEvent;
 import io.vavr.control.Either;
 import lombok.RequiredArgsConstructor;
 import lombok.val;

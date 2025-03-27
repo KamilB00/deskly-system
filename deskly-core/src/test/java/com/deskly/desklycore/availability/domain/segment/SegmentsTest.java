@@ -1,6 +1,6 @@
 package com.deskly.desklycore.availability.domain.segment;
 
-import com.deskly.desklycore.shared.TimeSlot;
+import com.deskly.desklycore.shared.language.TimeSlot;
 import org.junit.jupiter.api.Test;
 
 import java.time.Instant;

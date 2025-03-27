@@ -1,6 +1,6 @@
 package com.deskly.desklycore.availability.domain;
 
-import com.deskly.desklycore.shared.ResourceId;
+import com.deskly.desklycore.shared.language.ResourceId;
 
 import java.util.Arrays;
 import java.util.Map;

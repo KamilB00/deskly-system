@@ -68,7 +68,7 @@ pipeline {
             		}
 					steps {
 						script {
-					sh '''
+							sh '''
 						cd deskly-core
                         echo "Building the Java application using Maven... "
                         mvn clean install
@@ -83,7 +83,7 @@ pipeline {
             		}
 					steps {
 						script {
-					sh '''
+							sh '''
 						cd deskly-location
                         echo "Building the Java application using Maven... "
                         mvn clean install

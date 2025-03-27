@@ -45,12 +45,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: deskly-location-secrets-prod
-                  key: AWS_SECRET_ACCESS_KEY
+                  key: AWS_ACCESS_KEY_ID
             - name: AWS_SESSION_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: deskly-location-secrets-prod
-                  key: AWS_SECRET_ACCESS_KEY
+                  key: AWS_SESSION_TOKEN
           ports:
             - containerPort: 8080
           resources:
