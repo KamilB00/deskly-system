@@ -14,7 +14,7 @@ import java.util.UUID;
 @Entity
 public class ReservationHibernate {
 
-    @EmbeddedId
+    @Id
     private UUID reservationId;
 
     @Column(nullable = false)

@@ -42,7 +42,7 @@ public class SQSConfiguration {
     }
 
     @Bean
-    public SQSEventsPublisher eventsPublisher(SqsClient client) {
+    public EventsPublisher eventsPublisher(SqsClient client) {
         return new SQSEventsPublisher(client, queueUrl);
     }
 

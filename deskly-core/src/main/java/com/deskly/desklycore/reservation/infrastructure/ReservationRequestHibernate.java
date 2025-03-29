@@ -6,6 +6,7 @@ import com.deskly.desklycore.shared.language.ReservationId;
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -15,7 +16,7 @@ import java.util.UUID;
 @Entity
 public class ReservationRequestHibernate {
 
-    @EmbeddedId
+    @Id
     private UUID requestId;
 
     @Column(nullable = false, unique = true)

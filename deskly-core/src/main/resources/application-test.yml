@@ -1,0 +1,7 @@
+aws:
+  sqs:
+    url: test
+  region: test
+  secret-access-key: test
+  access-key-id: test
+  session-token: test
